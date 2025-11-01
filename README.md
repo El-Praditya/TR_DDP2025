@@ -1,7 +1,7 @@
 ### Persyaratan Teknis
 
 1. **Struktur Program**
-   - Gunakan array untuk menyimpan data
+   - Array = menyimpan data
    - Implementasi fungsi-fungsi dasar yang diperlukan
    - Proper error handling untuk setiap operasi
    - Implementasi algoritma searching sederhana
