@@ -83,7 +83,7 @@ switch(input){
     break;
 
     default:
-    printf("Error; masukkan 'U' atau 'X' untuk melanjutkan\n\n");
+    printf("\e[31m[ERROR!]\e[0m Masukkan 'U' atau 'X' untuk melanjutkan\n\n");
     pilih();
     }
 }
