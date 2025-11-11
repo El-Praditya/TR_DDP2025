@@ -8,7 +8,7 @@ void main(){
     char username[2][8] = {"user1","user2"};
     char password[2][8] = {"usersatu","userdua"};
     char user[8], pass[8], ulang;
-    int a, b, c = 0, d = 0;
+    int a, b, c = 0;
     
     printf("\e[1;33m _____________________________________\e[0m\n");
     printf("\e[1;33m|----------| TUGAS RANCANG |----------|\e[0m\n");
@@ -23,12 +23,11 @@ void main(){
     a = strcmp(username[i],user);
     b = strcmp(password[i],pass);
     if(a == 0 && b == 0){
-        c++;
-        d++;
+        c = 1;
         }
     }
 
-    if( c == 1 && d == 1){
+    if( c == 1 ){
         printf("\nLogin Sukses! \n");
         pencet();
     } else {
