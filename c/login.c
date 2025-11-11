@@ -5,8 +5,8 @@ void pencet();
 
 void main(){
     system("cls");
-    char username[2][8] = {"user","nama"};
-    char password[2][8] = {"admin","pass"};
+    char username[2][8] = {"user1","user2"};
+    char password[2][8] = {"usersatu","userdua"};
     char user[8], pass[8], ulang;
     int a, b, c = 0, d = 0;
     
