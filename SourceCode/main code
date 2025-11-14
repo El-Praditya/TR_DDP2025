@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+void loading();
+void login();
+void restoran();
+void kamus();
+void pola();
+void game();
+
+void main(){
+system("cls");
+
+}
