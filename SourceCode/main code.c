@@ -9,9 +9,9 @@ void restoran();
 void kamus();
 void pola();
 void game();
-void pencet();
+void yesno();
+void konfirmasikeluar();
 
-char pilihan;
 char makan[5][100] = {"Soto Ayam","Nasi Rames","Mie Goreng","Es Teh","Es Jeruk"};
 int loadonce = 0;
 int harga[5]= {6000,10000,11000, 3000, 4000};
@@ -64,6 +64,7 @@ void main(){
     loading();
     loadonce++;
     }
+
     system("cls");
     char userpass[2][2][10] = {{"user1","user2"},{"usersatu","userdua"}};
     char user[10], pass[10];
@@ -93,22 +94,15 @@ void main(){
         menu();
     } else {
         printf("\n\e[31m[ALERT]\e[0m Login gagal. Coba lagi? (y/n) :");
-        scanf(" %c", &pilihan);
-            switch(pilihan){
-            case 'y':
-            main();
-            case 'n':
-            exit(0);
-            default:
-            printf("\033[31m\n[ALERT]\033[0m Pilihan %c tidak valid. Pilih 'y' atau 'n' :", pilihan);
-            menu();
-            }
+        yesno();
+        main();
         }
     }
 
 
 void menu(){
 system("cls");
+int pilihan;
 // ASCII
     printf("\n\033[31m              _                                 \033[0m\n");
     printf("\033[31m  /\\/\\   __ _(_)_ __     /\\/\\   ___ _ __  _   _ \033[0m\n");
@@ -144,17 +138,7 @@ system("cls");
         } else if(pilihan == 4){
         kamus();
         } else if (pilihan == 5){
-            printf("\033[31mapakah yakin ingin keluar? [y/n]\033[0m");
-            scanf(" %c", &pilihan);
-            switch(pilihan){
-                case 'n':
-                menu();
-                case 'y':
-                exit(0);
-                default:
-                 printf("\033[31m\n[ALERT]\033[0m Pilihan %c tidak valid. Pilih 'y' atau 'n' :", pilihan);
-                 menu();
-            }
+            konfirmasikeluar();
             break;
         } 
     }
@@ -267,35 +251,156 @@ void pesanan(){
     printf("\n| Total Bayar Per Orang \t: Rp %6d \t|", tagihan/orang);
     printf("\n=================================================");
 
-    printf("\nBuat pesanan lagi? (y/n): ");
-    scanf(" %c", &pilihan);
-        switch(pilihan){
-            case 'y':
-                for(int i = 0; i < 5; i++){
-                jumlah[i] = 0;
-                }
-            porsi = 0;
-            restoran();
-            break;
-
-            case 'n':
-            menu();
-            break;
-
-            default:
-            menu();
-        }
+    printf("\n\nTekan Enter untuk kembali ke menu");
+    getchar();
+    getchar();
+    menu();
     }
-}
-void game(){
-
 }
 
 void pola(){
+system("cls");
+    printf("\e[36m===========================================================\n");
+    printf("|                | PROGRAM MEMBANGUN RUMAH |              |\n");
+    printf("===========================================================\e[0m\n");
+    int tinggi, a, b, c, d, e, f, g, h, i;
+    char bata; 
+    printf("Masukkan Tinggi Rumah: ");
+    scanf("%d", &tinggi);
+    printf("Masukkan 'Bata' Rumah: ");
+    scanf(" %c", &bata);
+    printf("\n");
+    
+            //cerobong
+    for(a = 1; a <= tinggi; a++ ){
+        for(g = 1; g <= tinggi; g++){
+            for(h = 0; h < (tinggi*2); h++){ //spasi
+                printf(" ");
+                    Sleep(50);
+            }
+            for(i = 0; i < (tinggi - 1); i++){
+                printf("\e[33m%c\e[0m", bata);
+                    Sleep(50);
+            }
+            printf("\n");
+        }
+            //atap rumah
+    for(a = 1; a <= tinggi; a++ ){
+        for(b=tinggi; b > a; b--){ //spasi
+            printf(" ");
+                Sleep(50);
+             }
+        for(c = 1; c <= (a+(a-1)); c++){
+            printf("\e[35m%c\e[0m", bata);
+                Sleep(50);
+             }
+        for(d = 0; d < (tinggi*2); d++){ // tembok atap
+            printf("\e[31m%c\e[0m", bata);
+                Sleep(50);
+             }
+        printf("\n");
+        }
 
+            //kotak rumah
+    for(int e = 0; e < tinggi; e++){
+        for(int f = 0; f < c; f++){
+        printf("\e[36m%c\e[0m", bata);
+            Sleep(50);
+            }
+        for(d = 0; d < (tinggi*2); d++){ // tembok
+        printf("\e[32m%c\e[0m", bata);
+            Sleep(50);
+            }
+        printf("\n");
+        }
+    }
+    printf("Mau membangun lagi? [y/n] : ");
+    yesno();
+    pola();
+}
+
+void game(){
+    int input, lawan; 
+    char tangan[3][10] = {"Gunting", "Batu", "Kertas"};
+    system("cls");
+
+    printf("\e[32mSUIT BERSAMA KOMPUTER!!\e[0m\n");
+    printf("1 - Gunting\n2 - Batu\n3 - Kertas\nPilih (1-3): ");
+    scanf("%d", &input);
+    srand(time(NULL));
+    lawan = rand() % (3-1+1)+1; //(angka akhir - angka awal + 1) + angka awal
+    if(input != 1 && input != 2 && input != 3){
+        printf("\e[31m[ALERT!]\e[0m Angka yang dimasukkan salah. Coba Lagi? (y/n) : ");
+        yesno();
+    }
+    printf("\n");
+
+    for(int i = 0; i < 3; i++){
+        Sleep(500);
+        printf("%s...", tangan[i]);
+    }
+
+    printf("!\n");
+    printf("Anda : %s | Komputer : %s\n", tangan[input-1], tangan[lawan-1]);
+    Sleep(700);
+    if(input == lawan){
+        printf("Seri!");
+    } else if(input == 1 && lawan == 2){
+        printf("\e[31mKau Kalah!");
+    } else if(input == 2 && lawan == 3){
+        printf("\e[31mKau Kalah!");
+    } else if(input == 3 && lawan == 1){
+        printf("\e[31mKau Kalah!");
+    } else if(input == 1 && lawan == 3){
+        printf("\e[32mKau Menang!");
+    } else if(input == 2 && lawan == 1){
+        printf("\e[32mKau Menang!");
+    } else if(input == 3 && lawan == 2){
+        printf("\e[32mKau Menang!");
+    }
+        
+    printf("\n\e[0m\nMain lagi? (y/n) : ");
+    yesno();
+    game();
 }
 
 void kamus(){
 
 }
 
+void yesno(){
+    char pilihan;
+    scanf(" %c", &pilihan);
+    switch(pilihan){
+            case 'y':
+            break;
+            case 'n':
+            menu();
+            break;
+            default:
+            printf("\033[31m\n[ALERT]\033[0m Pilihan '%c' tidak valid. Pilih 'y' atau 'n' :", pilihan);
+            yesno();
+            }
+}
+
+void konfirmasikeluar(){
+    char konfir;
+            printf("\n\033[31mApakah yakin ingin keluar? [y/n]\033[0m");
+            scanf(" %c", &konfir);
+            switch(konfir){
+                case 'n':
+                menu();
+                case 'y':
+                for(int e = 0; e < 101; e++){
+                    printf("%d%%", e);
+                    Sleep(100);
+                    printf("\b\b\b");
+                }
+                printf("\nSampai Jumpa!");
+                Sleep(2000);
+                exit(0);
+                default:
+                 printf("\033[31m\n[ALERT]\033[0m Pilihan '%c' tidak valid. Pilih 'y' atau 'n' :", konfir);
+                 konfirmasikeluar();
+            }
+}
