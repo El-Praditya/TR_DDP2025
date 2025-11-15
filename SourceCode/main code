@@ -1,14 +1,107 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
-void loading();
-void login();
-void restoran();
-void kamus();
-void pola();
-void game();
+//void loading();
+void menu();
+//void restoran();
+//void kamus();
+//void pola();
+//void game();
+
+
+int log1 = 0;
+char pilihan;
 
 void main(){
+    system("cls");
+    char userpass[2][2][10] = {{"user1","user2"},{"usersatu","userdua"}};
+    char user[10], pass[10];
+    int a, b, c = 0;
+    
+    printf("\e[1;31m _____________________________________\e[0m\n");
+    printf("\e[1;31m|----------| TUGAS RANCANG |----------|\e[0m\n");
+    printf("\e[1;31m =====================================\e[0m\n");
+
+    printf("\nUsername : ");
+    scanf("%10s", &user);
+    printf("Password : ");
+    scanf("%10s", &pass);
+
+    for(int i=0; i<2;i++){
+    a = strcmp(userpass[0][i],user);
+    b = strcmp(userpass[1][i],pass);
+    if(a == 0 && b == 0){
+        c = 1;
+        }
+    }
+
+    if( c == 1 ){
+        printf("\n\e[32mLogin Sukses!\e[0m\nTekan Enter untuk lanjut...");
+        getchar();
+        getchar();
+        menu();
+    } else {
+        printf("\n\e[31m[ALERT]\e[0m Login gagal. Coba lagi? (y/n) :");
+        scanf(" %c", &pilihan);
+            switch(pilihan){
+            case 'y':
+            main();
+            case 'n':
+            exit(0);
+            default:
+            printf("\033[31m\n[ALERT]\033[0m Pilihan %c tidak valid. Pilih 'y' atau 'n' :", pilihan);
+            }
+        }
+    }
+
+
+void menu(){
 system("cls");
+// ASCII
+    printf("\n\033[31m              _                                 \033[0m\n");
+    printf("\033[31m  /\\/\\   __ _(_)_ __     /\\/\\   ___ _ __  _   _ \033[0m\n");
+    printf("\033[31m /    \\ / _` | | '_ \\   /    \\ / _ \\ '_ \\| | | |\033[0m\n");
+    printf("\033[31m/ /\\/\\ \\ (_| | | | | | / /\\/\\ \\  __/ | | | |_| |\033[0m\n");
+    printf("\033[31m\\/    \\/\\__,_|_|_| |_| \\/    \\/\\___|_| |_|\\__,_|\033[0m\n\n");
+    printf("\033[31m=====================v.0.3======================\033[0m\n\n");
+                                                
+    do{ 
+        printf("\033[32m\tDaftar Kode Yang Bisa Dijalankan: \n\n\033[0m");
+        printf("\033[32m1\033[0m. Restoran\n");
+        printf("\033[32m2\033[0m. Pola Grafis Rumah\n");
+        printf("\033[32m3\033[0m. Game (Batu-Gunting-Kertas)\n");
+        printf("\033[32m4\033[0m. Kamus\n");
+        printf("\033[32m5\033[0m. Keluar dari program\n");
+        printf("\033[32m6\033[0m. Author\n");
+
+        printf("\n\033[32mPilih yang mana? \033[0m");
+        scanf("%d", &pilihan);
+
+// Kondisi
+        if (pilihan < 1 || pilihan > 6){
+            printf("\033[31m\n[ALERT]\033[0m Pilihan %d tidak valid. Masukan angka 1 - 6\n\n", pilihan);
+            getchar();
+            getchar();
+        }
+        
+        else if (pilihan == 5){
+            printf("\033[31mapakah yakin ingin keluar? [y/n]\033[0m");
+            scanf(" %c", &pilihan);
+            switch(pilihan){
+                case 'n':
+                menu();
+                case 'y':
+                exit(0);
+                default:
+                 printf("\033[31m\n[ALERT]\033[0m Pilihan %c tidak valid. Pilih 'y' atau 'n' :", pilihan);
+            }
+            break;
+        
+
+        }
+    }
+    while (pilihan < 1 || pilihan > 6);
+    
 
 }
