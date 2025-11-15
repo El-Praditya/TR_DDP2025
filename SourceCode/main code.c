@@ -29,34 +29,34 @@ void loading (){
     for (int j = 0; word [j] != '\0'; j++){
         printf("%c", word[j]);
         fflush(stdout);
-        Sleep(620);
+        //Sleep(620);
 
     }
 
     for (int a = 0; word1 [a] != '\0'; a++){
         printf("%c", word1[a]);
         fflush(stdout);
-        Sleep(150);
+        //Sleep(150);
     }
 
     for (int b = 0; word2 [b] != '\0'; b++){
         printf("%c", word2[b]);
         fflush(stdout);
-        Sleep(280);
+        //Sleep(280);
     }
 
-    Sleep(1500);
+    //Sleep(1500);
 
     for (i = 0; i < 3; i++){
-        Sleep(854);
+        //Sleep(854);
         fflush(stdout);
         printf(" .");
     }
 
-    Sleep(1500);
+    //Sleep(1500);
     printf(" \n\n\033[1m\033[32mWELCOME!\n\033[0m");
     
-    Sleep(2000);
+    //Sleep(2000);
 }
 
 void main(){
@@ -331,7 +331,9 @@ void game(){
     lawan = rand() % (3-1+1)+1; //(angka akhir - angka awal + 1) + angka awal
     if(input != 1 && input != 2 && input != 3){
         printf("\e[31m[ALERT!]\e[0m Angka yang dimasukkan salah. Coba Lagi? (y/n) : ");
+        getchar();
         yesno();
+        game();
     }
     printf("\n");
 
