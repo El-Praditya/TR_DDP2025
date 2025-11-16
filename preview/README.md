@@ -5,4 +5,5 @@ Preview Author:
 
 Preview Main Menu:
 
-![Uploading Screenshot 2025-11-16 224554.png…]()
+
+<img width="461" height="348" alt="Screenshot 2025-11-16 224554" src="https://github.com/user-attachments/assets/bd3345a7-ff09-4ab8-956c-b852ddd0d6f2" />
