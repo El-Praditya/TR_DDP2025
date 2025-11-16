@@ -12,12 +12,13 @@ void game();
 void yesno();
 void konfirmasikeluar();
 
+int loadonce = 1;
 char makan[5][100] = {"Soto Ayam","Nasi Rames","Mie Goreng","Es Teh","Es Jeruk"};
-int loadonce = 0;
 int harga[5]= {6000,10000,11000, 3000, 4000};
 int jumlah[5];
 int porsi;
 
+//Loading Screen
 void loading (){
     system("cls");
     int i;
@@ -29,36 +30,37 @@ void loading (){
     for (int j = 0; word [j] != '\0'; j++){
         printf("%c", word[j]);
         fflush(stdout);
-        //Sleep(620);
+        Sleep(620);
 
     }
 
     for (int a = 0; word1 [a] != '\0'; a++){
         printf("%c", word1[a]);
         fflush(stdout);
-        //Sleep(150);
+        Sleep(150);
     }
 
     for (int b = 0; word2 [b] != '\0'; b++){
         printf("%c", word2[b]);
         fflush(stdout);
-        //Sleep(280);
+        Sleep(280);
     }
 
-    //Sleep(1500);
+    Sleep(1500);
 
     for (i = 0; i < 3; i++){
-        //Sleep(854);
+        Sleep(854);
         fflush(stdout);
         printf(" .");
     }
 
-    //Sleep(1500);
+    Sleep(1500);
     printf(" \n\n\033[1m\033[32mWELCOME!\n\033[0m");
     
-    //Sleep(2000);
+    Sleep(2000);
 }
 
+//Main; run loading dan login 
 void main(){
     if(loadonce == 0){
     loading();
@@ -69,11 +71,9 @@ void main(){
     char userpass[2][2][10] = {{"user1","user2"},{"usersatu","userdua"}};
     char user[10], pass[10];
     int a, b, c = 0;
-    
-    printf("\e[1;31m _____________________________________\e[0m\n");
-    printf("\e[1;31m|----------| TUGAS RANCANG |----------|\e[0m\n");
-    printf("\e[1;31m =====================================\e[0m\n");
 
+    printf("\e[1;32m SELAMAT DATANG DI TUGAS RANCANG KAMI\e[0m\n");
+    printf("\e[31m============= Kelompok 3 =============\e[0m\n");
     printf("\nUsername : ");
     scanf("%10s", &user);
     printf("Password : ");
@@ -99,11 +99,11 @@ void main(){
         }
     }
 
-
+//(103-147) Menu Utama
 void menu(){
 system("cls");
 int pilihan;
-// ASCII
+    // ASCII
     printf("\n\033[31m              _                                 \033[0m\n");
     printf("\033[31m  /\\/\\   __ _(_)_ __     /\\/\\   ___ _ __  _   _ \033[0m\n");
     printf("\033[31m /    \\ / _` | | '_ \\   /    \\ / _ \\ '_ \\| | | |\033[0m\n");
@@ -123,7 +123,7 @@ int pilihan;
         printf("\n\033[32mPilih yang mana? \033[0m");
         scanf("%d", &pilihan);
 
-// Kondisi
+        // Kondisi
         if (pilihan < 1 || pilihan > 6){
             printf("\033[31m\n[ALERT]\033[0m Pilihan %d tidak valid. Masukan angka 1 - 6\n\n", pilihan);
             getchar();
@@ -146,20 +146,19 @@ int pilihan;
 
 }
 
+//Restoran; dibagi dua fungsi: restoran() untuk menu dan porsi, dan pesanan() untuk komputasi total dan split bill
 void restoran(){
     system("cls");
     int pilih;
-    printf("======================================\n");
-    printf("|             Menu Restoran          |\n");
-    printf("======================================\n");
-    printf("| 1 - Soto Ayam             Rp  6000 |\n");
-    printf("| 2 - Nasi Rames            Rp 10000 |\n");
-    printf("| 3 - Mie Goreng            Rp 11000 |\n");
-    printf("| 4 - Es Teh                Rp  3000 |\n");
-    printf("| 5 - Es Jeruk              Rp  4000 |\n");
-    printf("|====================================|\n");
-    printf("|Pilih 0 untuk menyelesaikan pesanan |\n");
-    printf("=====================================\n\n");
+    printf("           \e[1;31mMenu Restoran\e[0m           \n");
+    printf("\e[31m==================================\e[0m\n");
+    printf("\e[1;32m1\e[0m - Soto Ayam             Rp  6000 \n");
+    printf("\e[1;32m2\e[0m - Nasi Rames            Rp 10000 \n");
+    printf("\e[1;32m3\e[0m - Mie Goreng            Rp 11000 \n");
+    printf("\e[1;32m4\e[0m - Es Teh                Rp  3000 \n");
+    printf("\e[1;32m5\e[0m - Es Jeruk              Rp  4000 \n");
+    printf("\e[31m==================================\e[0m\n");
+    printf("Pilih 0 untuk menyelesaikan pesanan \n\n");
     printf("Pilih (0-5) : ");
     scanf("%d", &pilih);
     
@@ -216,22 +215,21 @@ void pesanan(){
     int total[5];
     int orang;
     int tagihan = 0;
-    printf("=========================================\n");
-    printf("| Nama\t\tJumlah\t\t Total\t|\n");
-    printf("=========================================\n");
+    printf("\e[1;31m Nama\t\tJumlah\t\t Total\t\e[0m\n");
+    printf("\e[31m========================================\e[0m\n");
         for(int i = 0; i < 5; i++){
             total[i] = jumlah[i] * harga[i];
             if(jumlah[i] != 0){
-            printf("| %s\t%dx\t\t %6d", makan[i], jumlah[i], total[i]);
-            printf("\t|\n");
+            printf(" %s\t%dx\t\t %6d", makan[i], jumlah[i], total[i]);
+            printf("\t\n");
             }
         }
         for(int i = 0; i < 5; i++){
             tagihan += total[i];
         }
-    printf("=========================================\n");
-    printf("|\t\tTotal Bayar : Rp %6d\t|\n", tagihan);   
-    printf("=========================================\n\n");
+    printf("\e[31m========================================\e\n[0m");
+    printf("\e[32m\t\tTotal Bayar :\e[0m Rp %6d\t\n", tagihan);   
+    printf("\e[31m========================================\e\n[0m");
     printf("Masukkan Jumlah Orang untuk Split Bill : ");
     scanf("%d", &orang);
 
@@ -245,24 +243,25 @@ void pesanan(){
             getchar();
             restoran();
     } else {
-    printf("\n=================================================");
-    printf("\n| Jumlah Orang yang membayar \t: %6d Orang \t|", orang);
-    printf("\n=================================================");
-    printf("\n| Total Bayar Per Orang \t: Rp %6d \t|", tagihan/orang);
-    printf("\n=================================================");
+    printf("\n\e[31m==============================================\e[0m");
+    printf("\n\e[32m Jumlah Orang yang membayar \t:\e[0m %d Orang \t", orang);
+    printf("\n\e[31m==============================================\e[0m");
+    printf("\n\e[32m Total Bayar Per Orang \t\t:\e[0m Rp %6d \t", tagihan/orang);
+    printf("\n\e[31m==============================================\e[0m");
 
-    printf("\n\nTekan Enter untuk kembali ke menu");
+    printf("\n\nTekan Enter untuk kembali ke menu...");
     getchar();
     getchar();
     menu();
     }
 }
 
+// Pola Grafis Membangun Rumah
 void pola(){
 system("cls");
-    printf("\e[36m===========================================================\n");
-    printf("|                | PROGRAM MEMBANGUN RUMAH |              |\n");
-    printf("===========================================================\e[0m\n");
+    printf("\e[1;32mPROGRAM MEMBANGUN RUMAH\e[0m\n");
+    printf("\e[31m=======================\e[0m\n");
+
     int tinggi, a, b, c, d, e, f, g, h, i;
     char bata; 
     printf("Masukkan Tinggi Rumah: ");
@@ -314,18 +313,22 @@ system("cls");
         printf("\n");
         }
     }
-    printf("Mau membangun lagi? [y/n] : ");
+    printf("\nMau membangun lagi? [y/n] : ");
     yesno();
     pola();
 }
 
+//Gunting Batu Kertas
 void game(){
     int input, lawan; 
     char tangan[3][10] = {"Gunting", "Batu", "Kertas"};
     system("cls");
 
-    printf("\e[32mSUIT BERSAMA KOMPUTER!!\e[0m\n");
-    printf("1 - Gunting\n2 - Batu\n3 - Kertas\nPilih (1-3): ");
+    printf("\e[32mSUIT BERSAMA KOMPUTER\e[0m\n");
+    printf("\e[31m=====================\e[0m\n");
+    printf("\e[1;32m1\e[0m - Gunting\n\e[1;32m2\e[0m - Batu\n\e[1;32m3\e[0m - Kertas\n");
+    printf("\e[31m=====================\e[0m\n");
+    printf("Pilih (1-3): ");
     scanf("%d", &input);
     srand(time(NULL));
     lawan = rand() % (3-1+1)+1; //(angka akhir - angka awal + 1) + angka awal
@@ -336,17 +339,18 @@ void game(){
         game();
     }
     printf("\n");
-
-    for(int i = 0; i < 3; i++){
         Sleep(500);
-        printf("%s...", tangan[i]);
-    }
+        printf("\e[31mGunting...\e[0m");
+        Sleep(500);
+        printf("\e[33mBatu...\e[0m");
+        Sleep(500);
+        printf("\e[32mKertas!!\e[0m\n\n");
+        Sleep(500);
 
-    printf("!\n");
-    printf("Anda : %s | Komputer : %s\n", tangan[input-1], tangan[lawan-1]);
+    printf("Anda : %s | Komputer : %s\n\n", tangan[input-1], tangan[lawan-1]);
     Sleep(700);
     if(input == lawan){
-        printf("Seri!");
+        printf("\e[1;37mSeri!\e[0m");
     } else if(input == 1 && lawan == 2){
         printf("\e[31mKau Kalah!");
     } else if(input == 2 && lawan == 3){
@@ -370,21 +374,7 @@ void kamus(){
 
 }
 
-void yesno(){
-    char pilihan;
-    scanf(" %c", &pilihan);
-    switch(pilihan){
-            case 'y':
-            break;
-            case 'n':
-            menu();
-            break;
-            default:
-            printf("\033[31m\n[ALERT]\033[0m Pilihan '%c' tidak valid. Pilih 'y' atau 'n' :", pilihan);
-            yesno();
-            }
-}
-
+//Fungsi untuk konfirmasi keluar dari program
 void konfirmasikeluar(){
     char konfir;
             printf("\n\033[31mApakah yakin ingin keluar? [y/n]\033[0m");
@@ -395,14 +385,35 @@ void konfirmasikeluar(){
                 case 'y':
                 for(int e = 0; e < 101; e++){
                     printf("%d%%", e);
-                    Sleep(100);
+                    Sleep(50);
                     printf("\b\b\b");
                 }
                 printf("\nSampai Jumpa!");
-                Sleep(2000);
+                Sleep(3000);
                 exit(0);
                 default:
                  printf("\033[31m\n[ALERT]\033[0m Pilihan '%c' tidak valid. Pilih 'y' atau 'n' :", konfir);
                  konfirmasikeluar();
+            }
+}
+
+//fungsi yang dipanggil setiap ada pilihan yes/no [y/n]
+void yesno(){
+    char pilihan;
+    scanf(" %c", &pilihan);
+    switch(pilihan){
+            case 'y':
+            break;
+            case 'Y':
+            break;
+            case 'n':
+            menu();
+            break;
+            case 'N':
+            menu();
+            break;
+            default:
+            printf("\033[31m\n[ALERT]\033[0m Pilihan '%c' tidak valid. Pilih 'y' atau 'n' :", pilihan);
+            yesno();
             }
 }
