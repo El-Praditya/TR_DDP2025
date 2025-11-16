@@ -8,6 +8,27 @@ int main (){
     char word1[] = "D I ";
     char word2[] = "N G";
 
+    printf("\033[32m         ____ \n");
+    printf("        |    | \n");
+    printf("        |____| \n");
+    printf("       _|____|_ \n");   
+    printf("        /  ee`. \n");    
+    printf("      .<     __O \n");   
+    printf("     /\\ \\.-.' \\ \n");    
+    printf("    J  `.|`.\\/ \\ \n");      
+    printf("    | |_.|  | | | \n");
+    printf("     \\__.'`.|-' / \n");
+    printf("     L   /|o`--'\\ \n"); 
+    printf("     |  /\\/\\/\\   \\ \n");           
+    printf("     J /      `.__\\ \n");
+    printf("     |/         /  \\ \n");     
+    printf("      \\      .'`.  `. \n");  
+    printf("    ____)_/\\_(____`.  `-._ \n");
+    printf("   (___._/  \\_.___) `-.___ \033[0m\n\n\n");
+
+
+    printf("\033[33m[INFO]\033[0m ");
+
     for (int j = 0; word [j] != '\0'; j++){
         printf("%c", word[j]);
         fflush(stdout);
@@ -37,7 +58,8 @@ int main (){
 
     Sleep(1500);
 
-    printf(" \n\n\033[1m\033[32mWELCOME!\n\033[0m");
+    printf("\n\n\033[33m[INFO]\033[0m Welcome! Tekan enter untuk lanjut...\n");
+    getchar();
 
     //Sleep(2000);
 
