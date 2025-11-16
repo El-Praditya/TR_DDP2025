@@ -6,7 +6,8 @@
 void menu();
 void restoran();
     void pesanan();
-void kamus();
+int kamus();
+    int sama();
 void pola();
 void game();
 void yesno();
@@ -17,6 +18,10 @@ char makan[5][100] = {"Soto Ayam","Nasi Rames","Mie Goreng","Es Teh","Es Jeruk"}
 int harga[5]= {6000,10000,11000, 3000, 4000};
 int jumlah[5];
 int porsi;
+struct Istilah {
+    char kata[50];
+    char definisi[200];
+};
 
 //Loading Screen
 void loading (){
@@ -234,7 +239,7 @@ void pesanan(){
     scanf("%d", &orang);
 
     if(orang == 0){
-        printf("[ALERT] Angka untuk split bill invalid. mohon buat pesanan lain... (Tekan enter untuk lanjut)");
+        printf("\033[31m\n[ALERT]\033[0m Angka untuk split bill invalid. mohon buat pesanan lain... (Tekan enter untuk lanjut)");
             for(int i = 0; i < 5; i++){
             jumlah[i] = 0;
                 }
@@ -259,13 +264,19 @@ void pesanan(){
 // Pola Grafis Membangun Rumah
 void pola(){
 system("cls");
-    printf("\e[1;32mPROGRAM MEMBANGUN RUMAH\e[0m\n");
-    printf("\e[31m=======================\e[0m\n");
+    printf("\e[1;32m  PROGRAM MEMBANGUN RUMAH\e[0m\n");
+    printf("\e[31m===========================\e[0m\n");
 
     int tinggi, a, b, c, d, e, f, g, h, i;
     char bata; 
     printf("Masukkan Tinggi Rumah: ");
-    scanf("%d", &tinggi);
+    while(scanf("%d", &tinggi) != 1 || tinggi < 0){
+        printf("\033[31m[ALERT]\033[0m Mohon masukkan hanya angka positif atau bulat\n");
+        Sleep(500);
+        getchar();
+        printf("\nMasukkan Tinggi Rumah: ");
+    }
+
     printf("Masukkan 'Bata' Rumah: ");
     scanf(" %c", &bata);
     printf("\n");
@@ -351,28 +362,165 @@ void game(){
     Sleep(700);
     if(input == lawan){
         printf("\e[1;37mSeri!\e[0m");
-    } else if(input == 1 && lawan == 2){
+    } else if(input == 1 && lawan == 2 || input == 2 && lawan == 3 || input == 3 && lawan == 1){
         printf("\e[31mKau Kalah!");
-    } else if(input == 2 && lawan == 3){
-        printf("\e[31mKau Kalah!");
-    } else if(input == 3 && lawan == 1){
-        printf("\e[31mKau Kalah!");
-    } else if(input == 1 && lawan == 3){
+    } else if(input == 1 && lawan == 3 || input == 2 && lawan == 1 || input == 3 && lawan == 2){
         printf("\e[32mKau Menang!");
-    } else if(input == 2 && lawan == 1){
-        printf("\e[32mKau Menang!");
-    } else if(input == 3 && lawan == 2){
-        printf("\e[32mKau Menang!");
-    }
-        
+    } 
     printf("\n\e[0m\nMain lagi? (y/n) : ");
     yesno();
     game();
 }
 
-void kamus(){
+//Kamus; dibagi 2 fungsi: kamus() untuk menu utama kampus beserta fiturnya, dan compare() untuk membandingkan inputan user 
+int kamus(){
+    struct Istilah daftar[100];
+    int jumlah = 0;
+    int nav, i;
+    char cari[50];
+    system("cls");
 
+do {
+    printf ("\e[31m======= \e[32mKamus Sederhana\e[0m \e[31m=======\e[0m\n\n");
+
+    printf ("\e[1;32m1.\e[0m Cari Kata\n");
+    printf ("\e[1;32m2.\e[0m Tambah Kata Baru\n");
+    printf ("\e[1;32m3.\e[0m Tampilkan Daftar Kata\n");
+    printf ("\e[1;32m4.\e[0m Kembali Ke Menu Utama\n\n");
+    printf ("Pilih menu: ");
+    
+    scanf ("%d", &nav);
+    getchar();
+    system("cls");
+
+    switch(nav) {
+
+        case 1: {
+        char CariLagi;
+        int Pilihan;
+
+        do {
+            if (jumlah == 0) {
+                printf("\e[31m\nBelum ada kata tersimpan.\e[0m\n\n");
+                printf("Kembali ke menu? (y/n): ");
+                scanf(" %c", &Pilihan);
+
+            if (Pilihan == 'y' || Pilihan == 'Y') {
+                break;
+            } 
+            else if (Pilihan == 'n' || Pilihan == 'N') {
+                exit(0);
+            } 
+            else {
+                printf("Pilihan tidak valid!\n");
+                printf("Tekan Enter untuk kembali...");
+                getchar();
+                break;
+            }
+
+
+            } else {
+                printf ("\nMasukkan kata yang dicari: ");
+                scanf ("%s", cari);
+                getchar();
+
+        for (i = 0; i < jumlah; i++) {
+            if (sama(cari, daftar[i].kata)) {
+                printf ("\n");
+                printf ("\e[32mArtinya:\e[0m %s\n", daftar[i].definisi);
+                break;
+            }
+        }
+
+        if (i == jumlah) {
+            printf ("\n\e[31m=== Kata tidak ditemukan. ===\e[0m\n");
+            }
+        }
+
+        printf ("\nMau cari kata lagi? (y/n): ");
+        scanf (" %c", &CariLagi);
+        
+        } while (CariLagi == 'y' || CariLagi == 'Y');  
+            printf ("\nTekan Enter untuk kembali ke menu...");
+            getchar();
+            getchar();
+            system("cls");
+            break;
+    }
+
+
+        case 2: {
+        char tambah;
+
+        do {
+            printf ("\e[31m====== INPUT KATA ======\e[0m\n");
+            printf ("Masukkan kata baru   :  ");
+            scanf ("%s", daftar[jumlah].kata);
+            getchar();
+
+            printf ("Masukkan definisinya :  ");
+            scanf ("%[^\n]", daftar[jumlah].definisi);
+            getchar();
+            printf ("\n");
+
+            jumlah++;
+            printf ("\e[31m=== \e[32mKata berhasil ditambahkan!\e[0m \e[31m===\e[0m\n");
+            
+            printf ("Mau tambah data lagi? (y/n) :  ");
+            scanf (" %c", &tambah);
+            
+
+            system("cls");
+            } while (tambah == 'y' || tambah == 'Y');
+            {
+                printf ("Tekan Enter untuk Kembali ke Menu...");
+                getchar();
+                system("cls");
+                break;
+            }
+        }
+
+        case 3:
+            if (jumlah == 0){
+            printf ("\n\e[31mBelum ada data kata yang tersimpan.\e[0m\n");
+            }  else {
+                printf ("\e[31m===== \e[32mDaftar Kata\e[0m \e[31m=====\e[0m\n");
+                for (i=0; i<jumlah; i++){
+                printf ("%d. %s \n-> %s\n\n", i+1, daftar[i].kata, daftar[i].definisi);
+                }
+            }
+
+            printf ("Tekan Enter untuk Kembali ke Menu...");
+            getchar();
+            system("cls");
+            break;
+
+
+        case 4:
+            printf ("\n\e[31m=== \e[32mTerima kasih\e[0m \e[31m===\e[0\n");
+            menu();
+            break;
+
+        default:
+            printf ("\nMenu tidak ada.\n");
+    }
+
+} while (nav != 4);
+
+return 0;
 }
+
+int sama (char a[], char b[]) {
+    int i = 0;
+        while (a[i] != '\0' && b[i] != '\0') {
+            if (a[i] != b[i]) {
+            return 0;
+            }
+        i++;
+        }
+    return (a[i] == '\0' && b[i] == '\0');
+}
+
 
 //Fungsi untuk konfirmasi keluar dari program
 void konfirmasikeluar(){
