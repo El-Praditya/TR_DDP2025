@@ -13,8 +13,8 @@ void game();
 void yesno();
 void konfirmasikeluar();
 
-int loadonce = 1;
-char makan[5][100] = {"Soto Ayam","Nasi Rames","Mie Goreng","Es Teh","Es Jeruk"};
+int loadonce = 0;
+char makan[5][100] = {"Soto Ayam","Nasi Rames","Mie Goreng","Es Teh  ","Es Jeruk"};
 int harga[5]= {6000,10000,11000, 3000, 4000};
 int jumlah[5];
 int porsi;
@@ -25,12 +25,33 @@ struct Istilah {
 
 //Loading Screen
 void loading (){
-    system("cls");
     int i;
     int b;
     char word[] = "L O A ";
     char word1[] = "D I ";
     char word2[] = "N G";
+    system("cls");
+    printf("\033[33m[INFO]\033[0m Program is starting... \n\n");
+    printf("\033[32m         ____ \n");
+    printf("        |    | \n");
+    printf("        |____| \n");
+    printf("       _|____|_ \n");   
+    printf("        /  ee`. \n");    
+    printf("      .<     __O \n");   
+    printf("     /\\ \\.-.' \\ \n");    
+    printf("    J  `.|`.\\/ \\ \n");      
+    printf("    | |_.|  | | | \n");
+    printf("     \\__.'`.|-' / \n");
+    printf("     L   /|o`--'\\ \n"); 
+    printf("     |  /\\/\\/\\   \\ \n");           
+    printf("     J /      `.__\\ \n");
+    printf("     |/         /  \\ \n");     
+    printf("      \\      .'`.  `. \n");  
+    printf("    ____)_/\\_(____`.  `-._ \n");
+    printf("   (___._/  \\_.___) `-.___ \033[0m\n\n\n");
+
+
+    printf("\033[33m[INFO]\033[0m ");
 
     for (int j = 0; word [j] != '\0'; j++){
         printf("%c", word[j]);
@@ -60,10 +81,11 @@ void loading (){
     }
 
     Sleep(1500);
-    printf(" \n\n\033[1m\033[32mWELCOME!\n\033[0m");
-    
-    Sleep(2000);
+
+    printf("\n\n\033[33m[INFO]\033[0m Welcome! Tekan enter untuk lanjut... ");
+    getchar();
 }
+
 
 //Main; run loading dan login 
 void main(){
@@ -531,12 +553,7 @@ void konfirmasikeluar(){
                 case 'n':
                 menu();
                 case 'y':
-                for(int e = 0; e < 101; e++){
-                    printf("%d%%", e);
-                    Sleep(50);
-                    printf("\b\b\b");
-                }
-                printf("\nSampai Jumpa!");
+                printf("\n\n\t\t\tTerimakasih dan Sampai Jumpa!");
                 Sleep(3000);
                 exit(0);
                 default:
