@@ -62,6 +62,6 @@ int main (){
     getchar();
 
     //Sleep(2000);
-
+    system("cls");
     return 0;
 }
