@@ -33,6 +33,7 @@ void loading (){
     char word2[] = "N G";
     system("cls");
     printf("\033[33m[INFO]\033[0m Program is starting... \n\n");
+    Sleep(300);
     printf("\033[32m         ____ \n");
     printf("        |    | \n");
     printf("        |____| \n");
@@ -116,7 +117,7 @@ void main(){
     }
 
     if( c == 1 ){
-        printf("\n\e[32mLogin Sukses!\e[0m\nTekan Enter untuk lanjut...");
+        printf("\033[33m\n[INFO]\033[0m \e[32mLogin Sukses!\e[0m Tekan Enter untuk lanjut...\n");
         getchar();
         getchar();
         menu();
@@ -556,8 +557,17 @@ void konfirmasikeluar(){
                 case 'n':
                 menu();
                 case 'y':
-                printf("\n\n\t\t\tTerimakasih dan Sampai Jumpa!");
-                Sleep(3000);
+                    printf("\033[33m\n[INFO]\033[0m Ending Program...\n");
+                    Sleep(1600);
+                    printf("\033[33m[INFO]\033[0m Closing For...\n");
+                    Sleep(1600);
+                    printf("\033[33m[INFO]\033[0m Closing Function...\n");
+                    Sleep(1600);
+                    printf("\033[33m[INFO]\033[0m Terminating Program...\n");
+                    Sleep(1600);
+                    printf("\033[33m[INFO]\033[0m Thank You for using our program!\n");
+                    printf("\033[32m[SUCCESS]\033[0m Closing Program...\n");
+                    Sleep(4200);
                 exit(0);
                 default:
                  printf("\033[31m\n[ALERT]\033[0m Pilihan '%c' tidak valid. Pilih 'y' atau 'n' :", konfir);
@@ -565,6 +575,7 @@ void konfirmasikeluar(){
             }
 }
 
+//Author; Credit/Identitas pembuat
 void author(){
 
     system("cls");
