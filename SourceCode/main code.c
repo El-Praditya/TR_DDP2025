@@ -548,26 +548,27 @@ void konfirmasikeluar(){
     char konfir;
             printf("\n\033[33m[INFO]\033[0m Apakah yakin ingin keluar? [y/N] ");
             scanf(" %c", &konfir);
-            switch(konfir){
-                case 'n':
-                menu();
-                case 'y':
-                    printf("\033[33m\n[INFO]\033[0m Waiting for closing...\n");
-                    Sleep(1600);
-                    printf("\033[33m[INFO]\033[0m Checking requirements...\n");
-                    Sleep(1500);
-                    printf("\033[33m[INFO]\033[0m Close all programs...\n");
-                    Sleep(1500);
-                    printf("\033[33m[INFO]\033[0m Terminating Program...\n");
-                    Sleep(1500);
-                    printf("\033[31m[ALERT]\033[0m Thank You for using our program!\n");
-                    Sleep(3000);
+            if(konfir == 'y' || konfir =='Y'){
+                printf("\033[33m\n[INFO]\033[0m Waiting for closing...\n");
+                Sleep(1600);
+                printf("\033[33m[INFO]\033[0m Checking requirements...\n");
+                Sleep(1500);
+                printf("\033[33m[INFO]\033[0m Close all programs...\n");
+                Sleep(1500);
+                printf("\033[33m[INFO]\033[0m Terminating Program...\n");
+                Sleep(1500);
+                printf("\033[31m[ALERT]\033[0m Thank You for using our program!\n");
+                Sleep(3000);
                 exit(0);
-                default:
-                 printf("\033[31m\n[ALERT]\033[0m Pilihan '%c' tidak valid. Pilih 'y' atau 'n' :", konfir);
-                 konfirmasikeluar();
+            } else if(konfir == 'n' || konfir == 'N'){
+                menu();
+            } else {
+                printf("\033[31m\n[ALERT]\033[0m Pilihan '%c' tidak valid. Pilih 'y' atau 'n' :", konfir);
+                konfirmasikeluar();
             }
-}
+
+    }
+
 
 //Author; Credit/Identitas pembuat
 void author(){
@@ -607,7 +608,7 @@ void author(){
     printf("\033[31mDEVELOPER:\033[0m\t \033[32mTeofilus Tri Adinugraha Moelyono\033[0m \n");
     printf("\033[31mNIM:\033[0m\t \t \033[32m672025093\033[0m \n");
     printf("\033[31mGITHUB: \033[0m\t \033[32mgithub.com/tridelta102\033[0m \n");
-    printf("\033[31mQUOTE:\033[0m \t \t \033[32mGapapa. Aku tetap happy saja\033[0m\n");
+    printf("\033[31mQUOTE:\033[0m \t \t \033[32mndak ndak ndak gitu\033[0m\n");
     printf("\033[32m-----------------------------------------------------\033[0m\n");
     printf("\033[31mDEVELOPER:\033[0m\t \033[32mHanny Sokha Anggana\033[0m \n");
     printf("\033[31mNIM:\033[0m\t \t \033[32m672025096\033[0m \n");
@@ -630,19 +631,11 @@ void author(){
 void yesno(){
     char pilihan;
     scanf(" %c", &pilihan);
-    switch(pilihan){
-            case 'y':
-            break;
-            case 'Y':
-            break;
-            case 'n':
-            menu();
-            break;
-            case 'N':
-            menu();
-            break;
-            default:
-            printf("\033[31m\n[ALERT]\033[0m Pilihan '%c' tidak valid. Pilih 'y' atau 'n' :", pilihan);
-            yesno();
-            }
+    if(pilihan == 'y' || pilihan =='Y'){
+    } else if(pilihan == 'n' || pilihan =='N'){       
+    menu();
+    } else {   
+    printf("\033[31m\n[ALERT]\033[0m Pilihan '%c' tidak valid. Pilih 'y' atau 'n' :", pilihan);
+    yesno();
+    } 
 }
