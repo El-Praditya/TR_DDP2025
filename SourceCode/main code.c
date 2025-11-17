@@ -134,7 +134,6 @@ void main(){
 void menu(){
 system("cls");
 int pilihan;
-    // ASCII
     printf("\n\033[31m              _                                 \033[0m\n");
     printf("\033[31m  /\\/\\   __ _(_)_ __     /\\/\\   ___ _ __  _   _ \033[0m\n");
     printf("\033[31m /    \\ / _` | | '_ \\   /    \\ / _ \\ '_ \\| | | |\033[0m\n");
@@ -154,7 +153,6 @@ int pilihan;
         printf("\n\033[32mPilih yang mana? \033[0m");
         scanf("%d", &pilihan);
 
-        // Kondisi
         if (pilihan < 1 || pilihan > 6){
             printf("\033[31m\n[ALERT]\033[0m Pilihan %d tidak valid. Masukan angka 1 - 6\n\n", pilihan);
             getchar();
@@ -264,18 +262,13 @@ void pesanan(){
     printf("\e[32m\t\tTotal Bayar :\e[0m Rp %6d\t\n", tagihan);   
     printf("\e[31m========================================\e\n[0m");
     printf("Masukkan Jumlah Orang untuk Split Bill : ");
-    scanf("%d", &orang);
-
-    if(orang == 0){
-        printf("\033[31m\n[ALERT]\033[0m Angka untuk split bill invalid. mohon buat pesanan lain... (Tekan enter untuk lanjut)");
-            for(int i = 0; i < 5; i++){
-            jumlah[i] = 0;
-                }
-            porsi = 0;
-            getchar();
-            getchar();
-            restoran();
-    } else {
+    while(scanf("%d", &orang) != 1 || orang <= 0){
+        printf("\033[31m\n[ALERT]\033[0m Angka untuk split bill invalid. masukkan angka diatas 0\n");
+        Sleep(500);
+        getchar();
+        printf("\nMasukkan Jumlah Orang untuk Split Bill : ");
+    }   
+    
     printf("\n\e[31m==============================================\e[0m");
     printf("\n\e[32m Jumlah Orang yang membayar \t:\e[0m %d Orang \t", orang);
     printf("\n\e[31m==============================================\e[0m");
@@ -286,7 +279,7 @@ void pesanan(){
     getchar();
     getchar();
     menu();
-    }
+    
 }
 
 // Pola Grafis Membangun Rumah
@@ -299,7 +292,7 @@ system("cls");
     char bata; 
     printf("Masukkan Tinggi Rumah: ");
     while(scanf("%d", &tinggi) != 1 || tinggi < 0){
-        printf("\033[31m[ALERT]\033[0m Mohon masukkan hanya angka positif atau bulat\n");
+        printf("\033[31m[ALERT]\033[0m Mohon masukkan hanya angka positif dan bulat\n");
         Sleep(500);
         getchar();
         printf("\nMasukkan Tinggi Rumah: ");
