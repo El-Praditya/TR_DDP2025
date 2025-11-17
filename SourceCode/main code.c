@@ -32,8 +32,10 @@ void loading (){
     char word1[] = "D I ";
     char word2[] = "N G";
     system("cls");
+
+
     printf("\033[33m[INFO]\033[0m Program is starting... \n\n");
-    Sleep(300);
+    Sleep(1000);
     printf("\033[32m         ____ \n");
     printf("        |    | \n");
     printf("        |____| \n");
@@ -84,7 +86,7 @@ void loading (){
 
     Sleep(1500);
 
-    printf("\n\n\033[33m[INFO]\033[0m Welcome! Tekan enter untuk lanjut... ");
+    printf("\n\n\033[32m[SUCCESS]\033[0m Tekan enter untuk lanjut... ");
     getchar();
 }
 
@@ -117,7 +119,7 @@ void main(){
     }
 
     if( c == 1 ){
-        printf("\033[33m\n[INFO]\033[0m \e[32mLogin Sukses!\e[0m Tekan Enter untuk lanjut...\n");
+        printf("\033[32m\n[SUCCESS]\033[0m Hallo %s! Tekan Enter untuk lanjut...\n", user); 
         getchar();
         getchar();
         menu();
@@ -551,23 +553,22 @@ int sama (char a[], char b[]) {
 //Fungsi untuk konfirmasi keluar dari program
 void konfirmasikeluar(){
     char konfir;
-            printf("\n\033[31mApakah yakin ingin keluar? [y/n]\033[0m");
+            printf("\n\033[33m[INFO]\033[0m Apakah yakin ingin keluar? [y/N] ");
             scanf(" %c", &konfir);
             switch(konfir){
                 case 'n':
                 menu();
                 case 'y':
-                    printf("\033[33m\n[INFO]\033[0m Ending Program...\n");
+                    printf("\033[33m\n[INFO]\033[0m Waiting for closing...\n");
                     Sleep(1600);
-                    printf("\033[33m[INFO]\033[0m Closing For...\n");
-                    Sleep(1600);
-                    printf("\033[33m[INFO]\033[0m Closing Function...\n");
-                    Sleep(1600);
+                    printf("\033[33m[INFO]\033[0m Checking requirements...\n");
+                    Sleep(1500);
+                    printf("\033[33m[INFO]\033[0m Close all programs...\n");
+                    Sleep(1500);
                     printf("\033[33m[INFO]\033[0m Terminating Program...\n");
-                    Sleep(1600);
-                    printf("\033[33m[INFO]\033[0m Thank You for using our program!\n");
-                    printf("\033[32m[SUCCESS]\033[0m Closing Program...\n");
-                    Sleep(4200);
+                    Sleep(1500);
+                    printf("\033[31m[ALERT]\033[0m Thank You for using our program!\n");
+                    Sleep(3000);
                 exit(0);
                 default:
                  printf("\033[31m\n[ALERT]\033[0m Pilihan '%c' tidak valid. Pilih 'y' atau 'n' :", konfir);
