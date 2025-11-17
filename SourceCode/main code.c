@@ -130,7 +130,7 @@ void main(){
         }
     }
 
-//(103-147) Menu Utama
+//Menu Utama
 void menu(){
 system("cls");
 int pilihan;
