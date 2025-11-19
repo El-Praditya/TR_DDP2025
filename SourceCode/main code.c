@@ -19,10 +19,8 @@ char makan[5][100] = {"Soto Ayam","Nasi Rames","Mie Goreng","Es Teh  ","Es Jeruk
 int harga[5]= {6000,10000,11000, 3000, 4000};
 int jumlah[5];
 int porsi;
-struct Istilah {
-    char kata[50];
-    char definisi[200];
-};
+char kata[100][50];
+char definisi[100][200];
 
 //Loading Screen
 void loading (){
@@ -395,7 +393,6 @@ void game(){
 
 //Kamus; dibagi 2 fungsi: kamus() untuk menu utama kampus beserta fiturnya, dan compare() untuk membandingkan inputan user 
 int kamus(){
-    struct Istilah daftar[100];
     int jumlah = 0;
     int nav, i;
     char cari[50];
@@ -418,7 +415,7 @@ do {
 
         case 1: {
         char CariLagi;
-        int Pilihan;
+        char Pilihan;
 
         do {
             if (jumlah == 0) {
@@ -446,9 +443,9 @@ do {
                 getchar();
 
         for (i = 0; i < jumlah; i++) {
-            if (sama(cari, daftar[i].kata)) {
+            if (sama(cari, kata[i])) {
                 printf ("\n");
-                printf ("\e[32mArtinya:\e[0m %s\n", daftar[i].definisi);
+                printf ("\e[32mArtinya:\e[0m %s\n", definisi[i]);
                 break;
             }
         }
@@ -476,11 +473,11 @@ do {
         do {
             printf ("\e[31m====== INPUT KATA ======\e[0m\n");
             printf ("Masukkan kata baru   :  ");
-            scanf ("%s", daftar[jumlah].kata);
+            scanf ("%s", kata[jumlah]);
             getchar();
 
             printf ("Masukkan definisinya :  ");
-            scanf ("%[^\n]", daftar[jumlah].definisi);
+            scanf ("%[^\n]", definisi[jumlah]);
             getchar();
             printf ("\n");
 
@@ -507,7 +504,7 @@ do {
             }  else {
                 printf ("\e[31m===== \e[32mDaftar Kata\e[0m \e[31m=====\e[0m\n");
                 for (i=0; i<jumlah; i++){
-                printf ("%d. %s \n-> %s\n\n", i+1, daftar[i].kata, daftar[i].definisi);
+                printf ("%d. %s \n-> %s\n\n", i+1, kata[i], definisi[i]);
                 }
             }
 
